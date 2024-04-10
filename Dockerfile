@@ -1,4 +1,7 @@
 FROM haproxy:2.9.7-alpine3.19
+
+LABEL org.opencontainers.image.source="https://github.com/Adito5393/docker-socket-proxy"
+
 USER root
 RUN apk upgrade --no-cache -a && \
     apk add --no-cache ca-certificates tzdata tini openssl curl && \
