@@ -2,7 +2,7 @@ name: Build Docker Image
 on:
   push:
     branches:
-      - develop
+      - main
     paths:
       - start.sh
       - Dockerfile
@@ -51,7 +51,7 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64 #,linux/amd64/v2,linux/amd64/v3,linux/amd64/v4 #,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
-          push: ${{ github.ref == 'refs/heads/develop' }}
+          push: ${{ github.ref == 'refs/heads/main' || startsWith( github.ref, 'refs/tags/' ) }}
           tags: |
             ${{ steps.un.outputs.un }}/${{ github.event.repository.name }}:${{ github.ref_name }}
             ghcr.io/${{ steps.un.outputs.un }}/${{ github.event.repository.name }}:${{ github.ref_name }}
