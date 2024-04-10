@@ -8,6 +8,8 @@ on:
       - Dockerfile
       - haproxy.cfg
       - .github/workflows/docker.yml
+    tags:
+      - '*'
   pull_request:
     paths:
       - start.sh
